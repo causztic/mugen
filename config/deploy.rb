@@ -1,7 +1,7 @@
 # Change these
 server '128.199.193.0', port: 22, roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'git@github.com:causztic/grafiore-mugen.git'
+set :repo_url,        '/home/graf/grafiore-mugen.git'
 set :application,     'grafiore-mugen'
 set :user,            'graf'
 set :puma_threads,    [4, 16]
