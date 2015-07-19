@@ -1,3 +1,4 @@
 == README
 
-Meow.Meow!
+= First deployment:
+cap production deploy:initial

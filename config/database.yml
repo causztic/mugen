@@ -19,4 +19,6 @@ production:
   encoding: unicode
   host: localhost
   username: rails
-  password: pVhzuKlk9Q
+  password: gEqI6Tjy3u
+  pool: 5
+  database: mugen_production
