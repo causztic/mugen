@@ -1,5 +1,5 @@
 # Change these
-server '128.199.193.0', port: 8080, roles: [:web, :app, :db], primary: true
+server '128.199.193.0', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:causztic/grafiore-mugen.git'
 set :application,     'grafiore-mugen'
