@@ -1,0 +1,15 @@
+common: &common
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: localhost
+  username: causztic
+  password: password
+
+development:
+  <<: *common
+  database: development
+
+test:
+  <<: *common
+  database: test
