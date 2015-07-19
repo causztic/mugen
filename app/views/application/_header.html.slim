@@ -1,0 +1,19 @@
+head
+  meta charset="utf-8"
+  meta http-equiv='X-UA-Compatible'
+  title
+    = @title
+  meta name="description" content="Unlimited Music Works."
+  meta name="author" content="Lim Yao Jie"
+  meta name="viewport" content="width=device-width"
+
+  //facebook metas
+  / meta property="og:url" content=request.original_url
+  / meta property="og:title" content=fb_title
+  / meta property="og:description" content=fb_description
+  / meta property="og:image" content=fb_thumbnail
+  //quack quack
+
+  = favicon_link_tag
+  = stylesheet_link_tag 'application', :media => nil
+  = csrf_meta_tag

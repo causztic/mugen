@@ -27,6 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 
 gem 'dotenv'
+gem 'slim'
 gem 'pg'
 
 # Use Capistrano for deployment

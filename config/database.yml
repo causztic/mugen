@@ -8,8 +8,8 @@ common: &common
 
 development:
   <<: *common
-  database: development
+  database: mugen_dev
 
 test:
   <<: *common
-  database: test
+  database: mugen
