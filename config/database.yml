@@ -13,3 +13,10 @@ development:
 test:
   <<: *common
   database: mugen
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: rails
+  password: pVhzuKlk9Q
