@@ -36,7 +36,7 @@ set :default_env, {
 # set :keep_releases, 5
 
 ## Linked Files & Directories (Default None):
-# set :linked_files, %w{config/database.yml .env}
+set :linked_files, %w{config/database.yml .env}
 # set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 namespace :deploy do
@@ -56,7 +56,7 @@ namespace :deploy do
     on roles(:app) do
       Capistrano::Env.use do |env|
         env.add 'APP_DATABASE_PASSWORD'
-        env.add 'SECRET_KEY_BASE'
+        env.add 'SECRET_KEY_BASE', ENV['SECRET_KEY_BASE']
         env.formatter = :dotenv #=> default is :ruby, but it is deprecated now.
         env.filemode = 0644 #=> default is 0640.
       end
