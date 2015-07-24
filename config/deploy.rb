@@ -1,3 +1,5 @@
+require 'dotenv'
+Dotenv.load '.env'
 # Change these
 server '128.199.193.0', port: 22, roles: [:web, :app, :db], primary: true
 
@@ -9,7 +11,7 @@ set :user,            'graf'
 
 # Don't change these unless you know what you're doing
 set :pty,             true
-set :use_sudo,        false
+set :use_sudo,        true
 set :stage,           :production
 set :deploy_via,      :remote_cache
 set :deploy_to,       "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
@@ -21,14 +23,16 @@ set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh
 # set :puma_preload_app, true
 # set :puma_worker_timeout, nil
 # set :puma_init_active_record, true  # Change to false when not using ActiveRecord
-set :unicorn_pid,        "/var/run/unicorn.pid"
+set :unicorn_pid,        "/home/#{fetch(:user)}/apps/#{fetch(:application)}/shared/unicorn.pid"
 set :unicorn_config_path, "/etc/unicorn.conf"
-
+set :default_env, {
+  'APP_DATABASE_PASSWORD' => ENV['APP_DATABASE_PASSWORD']
+}
 ## Defaults:
 # set :scm,           :git
 # set :branch,        :master
 # set :format,        :pretty
-set :log_level,       :info
+# set :log_level,     :debug
 # set :keep_releases, 5
 
 ## Linked Files & Directories (Default None):
@@ -52,6 +56,7 @@ namespace :deploy do
     on roles(:app) do
       Capistrano::Env.use do |env|
         env.add 'APP_DATABASE_PASSWORD'
+        env.add 'SECRET_KEY_BASE'
         env.formatter = :dotenv #=> default is :ruby, but it is deprecated now.
         env.filemode = 0644 #=> default is 0640.
       end
@@ -68,10 +73,11 @@ namespace :deploy do
 
   desc 'Restart application'
   task :restart do
-    invoke 'unicorn:restart'
+    invoke 'unicorn:legacy_restart'
   end
 
   before :starting,     :check_revision
+  before :starting,     :set_env
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
