@@ -45,5 +45,5 @@ group :development do
     gem 'capistrano-bundler', require: false
     gem 'capistrano3-unicorn',require: false
 end
-
+gem 'capistrano-env'
 gem 'unicorn'

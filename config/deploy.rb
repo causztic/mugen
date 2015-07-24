@@ -36,7 +36,6 @@ set :log_level,       :info
 # set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
 namespace :deploy do
-
   desc "Make sure local git is in sync with remote."
   task :check_revision do
     on roles(:app) do
@@ -44,6 +43,17 @@ namespace :deploy do
         puts "WARNING: HEAD is not the same as origin/master"
         puts "Run `git push` to sync changes."
         exit
+      end
+    end
+  end
+
+  desc "Use envs"
+  task :set_env do
+    on roles(:app) do
+      Capistrano::Env.use do |env|
+        env.add 'APP_DATABASE_PASSWORD'
+        env.formatter = :dotenv #=> default is :ruby, but it is deprecated now.
+        env.filemode = 0644 #=> default is 0640.
       end
     end
   end
