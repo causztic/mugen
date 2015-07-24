@@ -13,15 +13,16 @@ set :use_sudo,        false
 set :stage,           :production
 set :deploy_via,      :remote_cache
 set :deploy_to,       "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
-set :puma_bind,       "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"
-set :puma_state,      "#{shared_path}/tmp/pids/puma.state"
-set :puma_pid,        "#{shared_path}/tmp/pids/puma.pid"
-set :puma_access_log, "#{release_path}/log/puma.error.log"
-set :puma_error_log,  "#{release_path}/log/puma.access.log"
+# set :puma_bind,       "unix://#{shared_path}/tmp/sockets/#{fetch(:application)}-puma.sock"
+# set :puma_state,      "#{shared_path}/tmp/pids/puma.state"
+# set :puma_access_log, "#{release_path}/log/puma.error.log"
+# set :puma_error_log,  "#{release_path}/log/puma.access.log"
 set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
-set :puma_preload_app, true
-set :puma_worker_timeout, nil
-set :puma_init_active_record, true  # Change to false when not using ActiveRecord
+# set :puma_preload_app, true
+# set :puma_worker_timeout, nil
+# set :puma_init_active_record, true  # Change to false when not using ActiveRecord
+set :unicorn_pid,        "/var/run/unicorn.pid"
+set :unicorn_config_path, "/etc/unicorn.conf"
 
 ## Defaults:
 # set :scm,           :git
@@ -34,30 +35,7 @@ set :log_level,       :info
 # set :linked_files, %w{config/database.yml .env}
 # set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
-namespace :puma do
-  desc 'Create Directories for Puma Pids and Socket'
-  task :make_dirs do
-    on roles(:app) do
-      execute "mkdir #{shared_path}/tmp/sockets -p"
-      execute "mkdir #{shared_path}/tmp/pids -p"
-    end
-  end
-
-  before :start, :make_dirs
-end
-
 namespace :deploy do
-  desc "Set environment variables"
-  task :set_env do
-    on roles(:app) do
-      Capistrano::Env.use do |env|
-        env.add 'SECRET_KEY_BASE'
-        env.formatter = :dotenv #=> default is :ruby, but it is deprecated now.
-        env.filemode = 0644 #=> default is 0640.
-        puts env
-      end
-    end
-  end
 
   desc "Make sure local git is in sync with remote."
   task :check_revision do
@@ -73,20 +51,17 @@ namespace :deploy do
   desc 'Initial Deploy'
   task :initial do
     on roles(:app) do
-      before 'deploy:restart', 'puma:start'
+      before 'deploy:restart', 'unicorn:start'
       invoke 'deploy'
     end
   end
 
   desc 'Restart application'
   task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      invoke 'puma:restart'
-    end
+    invoke 'unicorn:restart'
   end
 
   before :starting,     :check_revision
-  after  :finishing,    :set_env
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
