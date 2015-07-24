@@ -9,7 +9,6 @@ Rails.application.configure do
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
-  config.secret_token = "8966b8d507421bb0d14a3b0985bf82b391da8993b8419af4d192a00151f6080297bb2a41936d38e5542d74cbe1e3bec8e6b2dad8902a3494502583d5d8315455"
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
