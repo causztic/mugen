@@ -34,19 +34,6 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 set :linked_files, %w{config/database.yml .env}
 # set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
-desc "Database config"
-  task :setup_config, roles: :app do
-  # upload your database.yml from config dir to shared dir on server
-  put File.read("config/database.yml"), "#{shared_path}/config/database.yml"
-  # make symlink
-  run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
-  # upload you database.yml from config dir to shared dir on server
-  put File.read(".env"), "#{shared_path}/config/.env"
-  # make symlink
-  run "ln -nfs #{shared_path}/config/.env #{current_path}/.env"
-  before :start, :setup_config
-end
-
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
   task :make_dirs do
@@ -60,6 +47,21 @@ namespace :puma do
 end
 
 namespace :deploy do
+
+  desc "Database config"
+  task :setup_config do
+    on roles(:app) do
+      # upload your database.yml from config dir to shared dir on server
+      put File.read("config/database.yml"), "#{shared_path}/config/database.yml"
+      # make symlink
+      run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+      # upload you database.yml from config dir to shared dir on server
+      put File.read(".env"), "#{shared_path}/config/.env"
+      # make symlink
+      run "ln -nfs #{shared_path}/config/.env #{current_path}/.env"
+    end
+  end
+
   desc "Make sure local git is in sync with remote."
   task :check_revision do
     on roles(:app) do
@@ -87,6 +89,7 @@ namespace :deploy do
   end
 
   before :starting,     :check_revision
+  after  :finishing,    :setup_config
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
