@@ -31,8 +31,19 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 # set :keep_releases, 5
 
 ## Linked Files & Directories (Default None):
-set :linked_files, %w{config/database.yml .env}
+# set :linked_files, %w{config/database.yml}
 # set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
+
+Capistrano::Env.use do |env|
+  env.add /^MYAPP_/
+  env.add /^MYAPP_/ do |key|
+     key.gsub /^MYAPP_/, '' # replace keyname like MYAPP_DATABASE_URL => DATABASE_URL
+  end
+  #env.add 'UNICORN_PROCESSES'
+  #env.add 'HOGE', 'hage'
+  env.formatter = :dotenv #=> default is :ruby, but it is deprecated now.
+  env.filemode = 0644 #=> default is 0640.
+end
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
