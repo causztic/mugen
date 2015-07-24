@@ -27,7 +27,7 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 # set :scm,           :git
 # set :branch,        :master
 # set :format,        :pretty
-# set :log_level,     :debug
+set :log_level,       :info
 # set :keep_releases, 5
 
 ## Linked Files & Directories (Default None):
@@ -54,6 +54,7 @@ namespace :deploy do
         env.add 'SECRET_KEY_BASE'
         env.formatter = :dotenv #=> default is :ruby, but it is deprecated now.
         env.filemode = 0644 #=> default is 0640.
+        puts env
       end
     end
   end
@@ -85,7 +86,7 @@ namespace :deploy do
   end
 
   before :starting,     :check_revision
-  before :starting,        :setup_config
+  after  :finishing,    :set_env
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
   after  :finishing,    :restart
