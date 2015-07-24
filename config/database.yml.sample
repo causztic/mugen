@@ -1,0 +1,24 @@
+common: &common
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: localhost
+  username: causztic
+  password: password
+
+development:
+  <<: *common
+  database: mugen_dev
+
+test:
+  <<: *common
+  database: mugen
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: 
+  password: 
+  pool: 5
+  database: 
