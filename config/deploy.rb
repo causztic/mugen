@@ -31,18 +31,20 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 # set :keep_releases, 5
 
 ## Linked Files & Directories (Default None):
-# set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml .env}
 # set :linked_dirs,  %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
-Capistrano::Env.use do |env|
-  env.add /^MYAPP_/
-  env.add /^MYAPP_/ do |key|
-     key.gsub /^MYAPP_/, '' # replace keyname like MYAPP_DATABASE_URL => DATABASE_URL
-  end
-  #env.add 'UNICORN_PROCESSES'
-  #env.add 'HOGE', 'hage'
-  env.formatter = :dotenv #=> default is :ruby, but it is deprecated now.
-  env.filemode = 0644 #=> default is 0640.
+desc "Database config"
+  task :setup_config, roles: :app do
+  # upload your database.yml from config dir to shared dir on server
+  put File.read("config/database.yml"), "#{shared_path}/config/database.yml"
+  # make symlink
+  run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  # upload you database.yml from config dir to shared dir on server
+  put File.read(".env"), "#{shared_path}/config/.env"
+  # make symlink
+  run "ln -nfs #{shared_path}/config/.env #{current_path}/.env"
+  before :start, :setup_config
 end
 
 namespace :puma do
