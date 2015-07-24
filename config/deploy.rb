@@ -67,6 +67,4 @@ namespace :deploy do
   after  :finishing,    :restart
 end
 
-# ps aux | grep puma    # Get puma pid
-# kill -s SIGUSR2 pid   # Restart puma
-# kill -s SIGTERM pid   # Stop puma
+# unicorn master -D -c /etc/unicorn.conf -E production 
