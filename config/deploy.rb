@@ -1,11 +1,11 @@
 # Change these
 server '128.199.193.0', port: 22, roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'git@github.com:causztic/grafiore-mugen.git'
-set :application,     'grafiore-mugen'
+set :repo_url,        'git@github.com:causztic/mugen.git'
+set :application,     'mugen'
 set :user,            'graf'
-set :puma_threads,    [4, 16]
-set :puma_workers,    0
+# set :puma_threads,    [4, 16]
+# set :puma_workers,    0
 
 # Don't change these unless you know what you're doing
 set :pty,             true
