@@ -16,6 +16,9 @@ set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh
 set :default_env, {
   'APP_DATABASE_PASSWORD' => ENV['APP_DATABASE_PASSWORD']
 }
+set :rvm_ruby_string, 'ruby-2.2.1' # Change to your ruby version
+set :rvm_type, :user
+
 ## Defaults:
 # set :scm,           :git
 # set :branch,        :master
