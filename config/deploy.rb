@@ -59,7 +59,7 @@ namespace :deploy do
   task :restart do
     invoke 'unicorn:stop'
     on roles(:app) do
-      execute "bundle exec unicorn -c /home/graf/apps/mugen/current/config/unicorn/production.rb -E production -D"
+      within(fetch(:mugen) + "/current") { execute('execute "bundle exec unicorn -c /home/graf/apps/mugen/current/config/unicorn/production.rb -E production -D"') } 
     end
   end
 
