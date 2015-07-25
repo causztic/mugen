@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+.landing {
+  margin-top: 20%;
+  h1, h2 {
+    text-align: center;
+  }
+}
+
+.subheader {
+  font-weight: 100;
+}
