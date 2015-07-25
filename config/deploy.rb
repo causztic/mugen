@@ -1,7 +1,7 @@
 require 'dotenv'
 Dotenv.load '.env'
 # Change these
-server '128.199.193.0', port: 22, roles: [:web, :app, :db], primary: true
+server '128.199.193.0', port: 1025, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:causztic/mugen.git'
 set :application,     'mugen'
