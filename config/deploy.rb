@@ -45,7 +45,10 @@ namespace :deploy do
     on roles(:app) do
       Capistrano::Env.use do |env|
         env.add 'APP_DATABASE_PASSWORD'
-        env.add 'SECRET_KEY_BASE', ENV['SECRET_KEY_BASE']
+        env.add 'SECRET_KEY_BASE'
+        env.add 'AWS_ACCESS_KEY_ID'
+        env.add 'AWS_SECRET_ACCESS_KEY'
+        env.add 'AWS_REGION'
         env.formatter = :dotenv #=> default is :ruby, but it is deprecated now.
         env.filemode = 0644 #=> default is 0640.
       end
