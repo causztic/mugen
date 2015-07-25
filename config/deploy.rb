@@ -16,8 +16,6 @@ set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh
 set :default_env, {
   'APP_DATABASE_PASSWORD' => ENV['APP_DATABASE_PASSWORD']
 }
-set :rvm_ruby_string, 'ruby-2.2.1' # Change to your ruby version
-set :rvm_type, :user
 
 ## Defaults:
 # set :scm,           :git
@@ -62,7 +60,11 @@ namespace :deploy do
   task :restart do
     invoke 'unicorn:stop'
     on roles(:app) do
-      within(fetch(:deploy_to) + "/current") { execute("bundle exec unicorn -c /home/graf/apps/mugen/current/config/unicorn/production.rb -E production -D") } 
+      within fetch(:deploy_to) + "/current" do
+        with RAILS_ENV: fetch(:environment) do
+          execute "bundle exec unicorn -c /home/graf/apps/mugen/current/config/unicorn/production.rb -E production -D"
+        end
+      end 
     end
   end
 
