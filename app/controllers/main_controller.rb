@@ -8,7 +8,7 @@ class MainController < ApplicationController
     obj = s3.bucket('grafiore').object('鳥の詩.mp3')
     url = URI.parse(obj.presigned_url(:get))
     
-    @src = Rails.env.development? ? "" : url
+    @src = Rails.env.development? ? "/assets/test.mp3" : url
     #s3.get_object({bucket: "grafiore", key: "鳥の詩.mp3"})
   end
 

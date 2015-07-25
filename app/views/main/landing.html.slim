@@ -3,7 +3,9 @@
     h1 無限の音楽エンジン.
     h2.subheader coming soon!
   .row
-    section#audio
-    .center
-      audio controls=true autoplay=true
-        source src=@src type="audio/mpeg"
+    .col-md-4.col-md-offset-4
+      section#audio
+      canvas#visualization.center
+      .center
+        audio.introsong controls=true autoplay=true
+          source src=@src type="audio/mpeg"
