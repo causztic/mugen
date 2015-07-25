@@ -18,7 +18,7 @@ production:
   adapter: postgresql
   encoding: unicode
   host:     localhost
-  username: rails
+  username: graf
   password: <%= ENV['APP_DATABASE_PASSWORD'] %>
   pool: 5
   database: app_production
