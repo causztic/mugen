@@ -35,4 +35,5 @@ end
 # reference the capistrano "current" symlink
 before_exec do |_|
   ENV['BUNDLE_GEMFILE'] = File.join(root, 'Gemfile')
+  export ENV['AWS_REGION']
 end
