@@ -13,6 +13,7 @@ set :stage,           :production
 set :deploy_via,      :remote_cache
 set :deploy_to,       "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
 set :ssh_options,     { forward_agent: true, user: fetch(:user), keys: %w(~/.ssh/id_rsa.pub) }
+set :unicorn_env,     "production"
 set :default_env, {
   'APP_DATABASE_PASSWORD' => ENV['APP_DATABASE_PASSWORD']
 }
@@ -58,14 +59,7 @@ namespace :deploy do
 
   desc 'Restart application'
   task :restart do
-    invoke 'unicorn:stop'
-    on roles(:app) do
-      within fetch(:deploy_to) + "/current" do
-        with RAILS_ENV: fetch(:environment) do
-          execute "bundle exec unicorn -c /home/graf/apps/mugen/current/config/unicorn/production.rb -E production -D"
-        end
-      end 
-    end
+    invoke 'unicorn:legacy_restart'
   end
 
   before :starting,     :check_revision
