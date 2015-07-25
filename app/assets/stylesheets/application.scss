@@ -14,12 +14,19 @@
  *= require_self
  */
 
+.center {
+  text-align: center;
+}
+
 .landing {
   h1, h2 {
     text-align: center;
   }
-  .row {
+  .row:first-child {
     margin-top: 20%;
+  }
+  audio {
+    margin-top: 10%;
   }
 }
 
