@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'dotenv-rails', :groups => [:development, :test]
-
+gem 'dotenv-rails', :require => 'dotenv/rails-now'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use SCSS for stylesheets
@@ -38,8 +37,6 @@ group :development, :test do
   gem 'spring'
 end
 
-gem 'aws-sdk', '~> 2'
-
 group :development do
   gem 'capistrano',         require: false
   gem 'capistrano-rvm',     require: false
@@ -49,4 +46,5 @@ group :development do
   gem 'capistrano-env'
 end
 
+gem 'aws-sdk', '~> 2'
 gem 'unicorn'
