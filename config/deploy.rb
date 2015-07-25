@@ -57,7 +57,10 @@ namespace :deploy do
 
   desc 'Restart application'
   task :restart do
-    invoke 'unicorn:legacy_restart'
+    invoke 'unicorn:stop'
+    on roles(:app) do
+      execute "bundle exec unicorn -c /home/graf/apps/mugen/current/config/unicorn/production.rb -E production -D"
+    end
   end
 
   before :starting,     :check_revision
