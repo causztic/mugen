@@ -34,6 +34,5 @@ end
 # Force the bundler gemfile environment variable to
 # reference the capistrano "current" symlink
 before_exec do |_|
-  puts ENV['AWS_REGION']
   ENV['BUNDLE_GEMFILE'] = File.join(root, 'Gemfile')
 end
