@@ -38,6 +38,8 @@ group :development, :test do
   gem 'spring'
 end
 
+gem 'aws-sdk', '~> 2'
+
 group :development do
   gem 'capistrano',         require: false
   gem 'capistrano-rvm',     require: false
