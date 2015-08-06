@@ -7,4 +7,5 @@
       section#audio
       canvas#visualization.center
   .row
-    = render "box"
+    - @music.each do |m|
+      = render "box", music: m
