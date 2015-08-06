@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   //get audio context and create an analyser//
   var audioCtx = new (window.AudioContext || window.webkitAudioContext)(); 
   var analyser = audioCtx.createAnalyser();
@@ -19,20 +20,21 @@ $(document).ready(function() {
 
   function update() {
     requestAnimationFrame(update);
+    canvasCtx.save();
     analyser.getByteFrequencyData(dataArray);
     //canvasCtx.globalAlpha = 0.1;
     canvasCtx.fillStyle = 'rgb(255,255,255)';
     //canvasCtx.globalAlpha = 1;
     canvasCtx.fillRect(0, 0, WIDTH, HEIGHT*2);
+    canvasCtx.restore();
     var barWidth = (WIDTH / bufferLength) * 2.5;
     var barHeight;
     var x = 0;
     for(var i = 0; i < bufferLength; i++) {
       barHeight = dataArray[i]/2;
-
-      canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',50,50)';
+      canvasCtx.fillStyle="#FF0000";
       canvasCtx.fillRect(x,HEIGHT*2-barHeight,barWidth,barHeight);
-
+      canvasCtx.restore();
       x += barWidth + 1;
     };
   };
