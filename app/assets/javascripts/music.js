@@ -1,12 +1,18 @@
 $(document).ready(function() {
-  var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  //get audio context and create an analyser//
+  var audioCtx = new (window.AudioContext || window.webkitAudioContext)(); 
   var analyser = audioCtx.createAnalyser();
-  analyser.fftSize = 256;
+
+  //fast fourier transform size. the bigger the number, the more bars will appear.
+  analyser.fftSize = 512;
+
+
   var bufferLength = analyser.frequencyBinCount;
   var dataArray = new Uint8Array(bufferLength);
   var WIDTH = 360;
   var HEIGHT = 100;
 
+  //specify the canvas
   var canvas = document.querySelector('canvas');
   var canvasCtx = canvas.getContext('2d');
   canvasCtx.clearRect(0, 0, WIDTH, HEIGHT);
@@ -14,8 +20,10 @@ $(document).ready(function() {
   function update() {
     requestAnimationFrame(update);
     analyser.getByteFrequencyData(dataArray);
-    canvasCtx.fillStyle = 'rgb(200, 200, 200)';
-    canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+    //canvasCtx.globalAlpha = 0.1;
+    canvasCtx.fillStyle = 'rgb(255,255,255)';
+    //canvasCtx.globalAlpha = 1;
+    canvasCtx.fillRect(0, 0, WIDTH, HEIGHT*2);
     var barWidth = (WIDTH / bufferLength) * 2.5;
     var barHeight;
     var x = 0;
@@ -23,7 +31,7 @@ $(document).ready(function() {
       barHeight = dataArray[i]/2;
 
       canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',50,50)';
-      canvasCtx.fillRect(x,HEIGHT-barHeight/2,barWidth,barHeight);
+      canvasCtx.fillRect(x,HEIGHT*2-barHeight,barWidth,barHeight);
 
       x += barWidth + 1;
     };
