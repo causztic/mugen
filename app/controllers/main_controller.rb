@@ -9,8 +9,8 @@ class MainController < ApplicationController
     url = URI.parse(obj.presigned_url(:get))
     
     if Rails.env.development?
-      @src = "/assets/test.mp3"
-      @abs_src = "app/assets/audios/test.mp3"
+      @src = "/assets/会いたい.mp3"
+      @abs_src = "app/assets/audios/会いたい.mp3"
     else
       @abs_src = @src = url
     end
