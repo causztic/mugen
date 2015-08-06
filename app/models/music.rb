@@ -1,6 +1,6 @@
 class Music
 
-  attr_accessor :title, :artist, :cover_image, :path
+  attr_accessor :title, :artist, :cover_image, :path, :album
 
   def self.create_music_files(abs_src)
     @files = []
@@ -10,6 +10,7 @@ class Music
         @tag = file.id3v2_tag
         m.title = @tag.title
         m.artist = @tag.artist
+        m.album = @tag.album
         cover = @tag.frame_list('APIC').first
         m.cover_image = "data:#{cover.mime_type};base64, #{Base64.encode64(cover.picture)}"
       end
