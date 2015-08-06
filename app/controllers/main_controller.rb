@@ -5,7 +5,7 @@ class MainController < ApplicationController
 
   def landing
     if Rails.env.development?
-      @abs_src = ["app/assets/audios/会いたい.mp3", "app/assets/audios/tori-no-uta.mp3"]
+      @abs_src = ["app/assets/audios/会いたい.mp3", "app/assets/audios/tori-no-uta.mp3", "app/assets/audios/no-album-cover.mp3"]
     else
      s3 = Aws::S3::Resource.new
      @abs_src = []
