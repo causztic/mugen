@@ -1,3 +1,4 @@
+require 'taglib'
 class Music
 
   attr_accessor :title, :artist, :cover_image, :path, :album
