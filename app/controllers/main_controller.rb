@@ -8,8 +8,15 @@ class MainController < ApplicationController
     obj = s3.bucket('grafiore').object('鳥の詩.mp3')
     url = URI.parse(obj.presigned_url(:get))
     
-    @src = Rails.env.development? ? "/assets/test.mp3" : url
-    #s3.get_object({bucket: "grafiore", key: "鳥の詩.mp3"})
+    if Rails.env.development?
+      @src = "/assets/test.mp3"
+      @abs_src = "app/assets/audios/test.mp3"
+    else
+      @abs_src = @src = url
+    end
+
+    @music = Music.create_music_file(@abs_src)
+
   end
 
 end

@@ -2,3 +2,8 @@
 
 = First deployment:
 cap production deploy:initial
+
+= do:
++sudo apt-get install libtag1-dev+ or +brew install taglib+
++rvm install libtag-ruby+
+
