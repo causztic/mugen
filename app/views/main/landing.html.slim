@@ -1,16 +1,25 @@
 .main
   .row
     .col-md-3.divider.title
-      section#audio
-      canvas#visualization.center
-      h1 無限の音楽エンジン.
-      h2.subheader coming soon!
+      .title-bg
+      .row
+        .col-md-11
+          .viz
+            section#audio
+            canvas#visualization.center
+            audio.introsong controls=true autoplay=false
+              source src=@music[1].path type="audio/mpeg"
+          h1 無限の音楽エンジン.
+          h2.subheader coming soon!
+        .col-md-1.functions
+          nav.navbar.navnar-default
+            ul.nav.navbar-nav
+              li 
+                i.glyphicon.glyphicon-sort-by-alphabet aria-hidden="true" aria-label="sort by alphabet"
     .col-md-9
       .row
         - @music.each do |music|
-          .col-md-2.box
+          .col-md-3.box.music
             img src= music.cover_image
-            audio.introsong controls=true autoplay=false
-              source src=music.path type="audio/mpeg"
   .row
     h6.subheader.footer All rights reserved.

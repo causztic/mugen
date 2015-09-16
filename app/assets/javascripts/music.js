@@ -23,7 +23,7 @@ $(document).ready(function() {
     canvasCtx.save();
     analyser.getByteFrequencyData(dataArray);
     //canvasCtx.globalAlpha = 0.1;
-    canvasCtx.fillStyle = '#f5f5f5';
+    canvasCtx.fillStyle = '#fff';
     //canvasCtx.globalAlpha = 1;
     canvasCtx.fillRect(0, 0, WIDTH, HEIGHT*2);
     canvasCtx.restore();
@@ -50,4 +50,11 @@ $(document).ready(function() {
 
   // Kick it off...
   update();
+
+  $(".music").click(function(){
+    $(".title-bg").css("background", "url('" + $(this).find("img")[0].src + "')");
+    $(".title-bg").css("background-repeat", "no-repeat");
+    $(".title-bg").css("background-position", "center center");
+    $(".title-bg").css("background-size", "cover");
+  });
 });

@@ -18,8 +18,38 @@ $background: #f8f8f8;
 $header: #f56363;
 $box: #40C0CB;
 
+.navbar-nav>li {
+  padding-right: 1em;
+  margin-bottom: 1em;
+}
+
+.functions {
+  margin: 1em 0 0 -0.5em;
+}
+
+i {
+  font-size: 1.5em;
+}
+
+.viz {
+  padding-top: 120%;
+}
+
 html,body { 
     height:100%;
+}
+.title-bg {
+  height: 100%;
+  width: inherit;
+  position: fixed;
+  left: 0;
+  right: 0;
+  filter: blur(7px);
+  -webkit-filter: blur(7px);
+  -moz-filter: blur(7px);
+  -ms-filter: blur(7px);
+  -o-filter: blur(7px);
+  overflow: hidden;
 }
 
 .footer {
@@ -36,9 +66,7 @@ h1 {
   color: $header;
   font-weight: 800;
 }
-.title {
-  padding-top: 30%;
-}
+
 .main {
   width: 99%;
   height: inherit;
@@ -58,10 +86,13 @@ h1 {
 .box {
   //border: 1px solid black;
   img {
+    -webkit-box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.1);
+    -moz-box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.1);
+    box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.1);
     width: 100%;
-    padding-top: 1em;
+    margin-top: 1em;
   }
-    padding-right: 0;
+    padding: 0 0 0 3em;
 }
 
 .center {
