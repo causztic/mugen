@@ -11,7 +11,7 @@
               canvas#visualization.center
               audio#player controls=true autoplay=false
                 source#currentsong src="" type="audio/mpeg"
-            h1 無限の音楽エンジン.
+            h1.song-info 無限の音楽エンジン.
         .col-md-1.functions
           nav.navbar.navnar-default
             ul.nav.navbar-nav
@@ -21,6 +21,11 @@
       .row
         - @music.each do |music|
           .col-md-3.box.music
+            .overlay-bg
+            .overlay
+              h4 = music.title
+              h5 = music.artist
+              h5 = music.album
             img src= music.cover_image
             .location data-url="#{music.path}"
   .row
