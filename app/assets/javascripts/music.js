@@ -23,7 +23,7 @@ $(document).ready(function() {
     canvasCtx.save();
     analyser.getByteFrequencyData(dataArray);
     //canvasCtx.globalAlpha = 0.1;
-    canvasCtx.fillStyle = '#fff';
+    canvasCtx.fillStyle = '#f8f8f8';
     //canvasCtx.globalAlpha = 1;
     canvasCtx.fillRect(0, 0, WIDTH, HEIGHT*2);
     canvasCtx.restore();
@@ -42,7 +42,7 @@ $(document).ready(function() {
   // Hook up the audio routing...
   // player -> analyser -> speakers
   // (Do this after the player is ready to play - https://code.google.com/p/chromium/issues/detail?id=112368#c4)
-  $(".introsong").bind('canplay', function() {
+  $("#player").bind('canplay', function() {
     var source = audioCtx.createMediaElementSource(this);
     source.connect(analyser);
     analyser.connect(audioCtx.destination);
@@ -52,9 +52,20 @@ $(document).ready(function() {
   update();
 
   $(".music").click(function(){
-    $(".title-bg").css("background", "url('" + $(this).find("img")[0].src + "')");
+    var current_music = $(this);
+    var audio = $("#player");
+    $("#currentsong").attr("src", current_music.find(".location").data("url"));
+    audio[0].pause();
+    audio[0].load();
+    audio[0].oncanplaythrough = audio[0].play();
+    $(".album-img").hide();
+    $(".album-img").attr("src", current_music.find("img")[0].src);
+    $(".album-img").fadeIn();
+    $(".title-bg").hide();
+    $(".title-bg").css("background", "url('" + current_music.find("img")[0].src + "')");
     $(".title-bg").css("background-repeat", "no-repeat");
     $(".title-bg").css("background-position", "center center");
     $(".title-bg").css("background-size", "cover");
+    $(".title-bg").fadeIn();
   });
 });

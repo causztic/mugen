@@ -18,6 +18,13 @@ $background: #f8f8f8;
 $header: #f56363;
 $box: #40C0CB;
 
+@mixin blur {
+  filter: blur(7px);
+  -webkit-filter: blur(7px);
+  -moz-filter: blur(7px);
+  -ms-filter: blur(7px);
+  -o-filter: blur(7px);
+}
 .navbar-nav>li {
   padding-right: 1em;
   margin-bottom: 1em;
@@ -31,8 +38,19 @@ i {
   font-size: 1.5em;
 }
 
+.title-items {
+  background-color: $background;
+  padding: 0 1em 1em 1em;
+}
+
+
 .viz {
-  padding-top: 120%;
+  margin-top: 70%;
+  padding-top: 1em;
+
+  .album-img {
+    width: 100%;
+  }
 }
 
 html,body { 
@@ -44,11 +62,7 @@ html,body {
   position: fixed;
   left: 0;
   right: 0;
-  filter: blur(7px);
-  -webkit-filter: blur(7px);
-  -moz-filter: blur(7px);
-  -ms-filter: blur(7px);
-  -o-filter: blur(7px);
+  @include blur;
   overflow: hidden;
 }
 

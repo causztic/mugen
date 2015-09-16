@@ -4,13 +4,14 @@
       .title-bg
       .row
         .col-md-11
-          .viz
-            section#audio
-            canvas#visualization.center
-            audio.introsong controls=true autoplay=false
-              source src=@music[1].path type="audio/mpeg"
-          h1 無限の音楽エンジン.
-          h2.subheader coming soon!
+          .title-items
+            .viz
+              img.album-img
+              section#audio
+              canvas#visualization.center
+              audio#player controls=true autoplay=false
+                source#currentsong src="" type="audio/mpeg"
+            h1 無限の音楽エンジン.
         .col-md-1.functions
           nav.navbar.navnar-default
             ul.nav.navbar-nav
@@ -21,5 +22,6 @@
         - @music.each do |music|
           .col-md-3.box.music
             img src= music.cover_image
+            .location data-url="#{music.path}"
   .row
     h6.subheader.footer All rights reserved.
