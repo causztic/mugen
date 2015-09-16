@@ -1,8 +1,8 @@
 .row
-  .col-md-3.divider.title
+  .col-md-3.col-sm-12.divider.title
     .title-bg
     .row
-      .col-md-12
+      .col-md-12.col-sm-6
         .title-items
           .viz
             img.album-img
@@ -16,9 +16,9 @@
       /     ul.nav.navbar-nav
       /       li 
       /         i.glyphicon.glyphicon-sort-by-alphabet aria-hidden="true" aria-label="sort by alphabet"
-  .col-md-9.grid.js-masonry
+  .col-md-9.col-sm-12.grid.js-masonry
     - @music.each_with_index do |music, index|
-        .col-md-3.box.music 
+        .col-md-3.col-sm-6.box.music 
           .overlay-bg
           .overlay
             h4 = music.title
