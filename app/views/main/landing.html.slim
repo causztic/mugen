@@ -1,11 +1,16 @@
-.container
+.main
   .row
-    h1 無限の音楽エンジン.
-    h2.subheader coming soon!
-  .row
-    .col-md-4.col-md-offset-4
+    .col-md-3.divider.title
       section#audio
       canvas#visualization.center
+      h1 無限の音楽エンジン.
+      h2.subheader coming soon!
+    .col-md-9
+      .row
+        - @music.each do |music|
+          .col-md-2.box
+            img src= music.cover_image
+            audio.introsong controls=true autoplay=false
+              source src=music.path type="audio/mpeg"
   .row
-    - @music.each do |m|
-      = render "box", music: m
+    h6.subheader.footer All rights reserved.

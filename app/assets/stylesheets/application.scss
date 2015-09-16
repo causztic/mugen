@@ -14,37 +14,67 @@
  *= require_self
  */
 
- .box {
+$background: #f8f8f8;
+$header: #f56363;
+$box: #40C0CB;
+
+html,body { 
+    height:100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  right: 15;
+}
+.divider {
+  border-right: 1px solid rgba(0,0,0,0.1);
+  height: 100%;
+  background: #f5f5f5;
+}
+h1 {
+  color: $header;
+  font-weight: 800;
+}
+.title {
+  padding-top: 30%;
+}
+.main {
+  width: 99%;
+  height: inherit;
+  text-align: left;
+  background-color: $background;
+  padding-left: 1em;
+}
+
+.lang-box {
+  text-align: center;
+  border: 1px solid rgba(0,0,0,0.1);
+  height: 15em;
+  h1 {
+    margin-top: 2.25em;
+  }
+}
+.box {
   //border: 1px solid black;
   img {
     width: 100%;
+    padding-top: 1em;
   }
-  img:before{
-    content:'';
-    padding:50% 0;
-    display:inline-block;
-  }
- }
+    padding-right: 0;
+}
 
 .center {
   text-align: center;
 }
 
-.landing {
-  h1, h2 {
-    text-align: center;
-  }
-  .row:first-child {
-    margin-top: 5%;
-  }
-  audio {
-    margin-top: 5%;
-    width: 100%;
-  }
-  #visualization {
-    height: 100px;
-    width: 100%;
-  }
+audio {
+  margin-top: 5%;
+  width: 100%;
+}
+#visualization {
+  height: 100px;
+  width: 100%;
 }
 
 .subheader {
