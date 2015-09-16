@@ -43,16 +43,24 @@ i {
   padding: 0 1em 1em 1em;
 }
 
+.title {
+  position: fixed;
+  left: 0;
+  top: 0;
+}
 
 .viz {
-  margin-top: 70%;
+  margin-top: 60%;
   padding-top: 1em;
 
   .album-img {
     width: 100%;
   }
 }
-
+body {
+  font-family: 'Open Sans', sans-serif !important;
+  overflow-x: hidden;
+}
 html,body { 
     height:100%;
 }
@@ -65,9 +73,14 @@ html,body {
   @include blur;
   overflow: hidden;
 }
-
+.grid {
+  background-image: url('pw_pattern.png');
+  min-height: 100%;
+  float: right;
+  padding: 0;
+}
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 15;
 }
@@ -104,22 +117,22 @@ h1 {
     -moz-box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.1);
     box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.1);
     width: 100%;
-    margin: 1em 0 1em 0;
+    margin: 1em 0 0 0;
   }
   .overlay, .overlay-bg {
-    display: none;
+    visibility: hidden;
     margin-left: -15px;
     width: 100%;
     height:100%;
     position:absolute;
   }
   &:hover > .overlay-bg {
-      display: block;
+      visibility: visible;
       background-color:#000;
       opacity:0.5;
   }
   &:hover > .overlay {
-    display: block;
+    visibility: visible;
     color: white;
     text-align: center;
     top: 40%;
@@ -129,10 +142,25 @@ h1 {
 .center {
   text-align: center;
 }
+.music-details {
+  h6:last-child {
+    margin-top: 0;
+  }
+  h6:first-child {
+    margin-bottom: 0;
+  }
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
 
 audio {
   margin-top: 5%;
   width: 100%;
+  display: none;
 }
 #visualization {
   height: 100px;

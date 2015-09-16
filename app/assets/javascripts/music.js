@@ -1,6 +1,10 @@
 $(document).ready(function(){
+    $('.grid').masonry({
+      itemSelector: '.music'
+    });
     $(".music").click(function(){
         var current_music = $(this);
+        $("#player").show();
         var audio = $("#player");
         $("#currentsong").attr("src", current_music.find(".location").data("url"));
         audio[0].pause();

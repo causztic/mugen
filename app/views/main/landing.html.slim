@@ -1,32 +1,36 @@
-.main
-  .row
-    .col-md-3.divider.title
-      .title-bg
-      .row
-        .col-md-11
-          .title-items
-            .viz
-              img.album-img
-              section#audio
-              canvas#visualization.center
-              audio#player controls=true autoplay=false
-                source#currentsong src="" type="audio/mpeg"
-            h1.song-info 無限の音楽エンジン.
-        .col-md-1.functions
-          nav.navbar.navnar-default
-            ul.nav.navbar-nav
-              li 
-                i.glyphicon.glyphicon-sort-by-alphabet aria-hidden="true" aria-label="sort by alphabet"
-    .col-md-9
-      .row
-        - @music.each do |music|
-          .col-md-3.box.music
-            .overlay-bg
-            .overlay
-              h4 = music.title
-              h5 = music.artist
-              h5 = music.album
-            img src= music.cover_image
-            .location data-url="#{music.path}"
-  .row
-    h6.subheader.footer All rights reserved.
+.row
+  .col-md-3.divider.title
+    .title-bg
+    .row
+      .col-md-12
+        .title-items
+          .viz
+            img.album-img
+            section#audio
+            canvas#visualization.center
+            audio#player controls=true autoplay=false
+              source#currentsong src="" type="audio/mpeg"
+          h1.song-info 無限の音楽エンジン.
+      / .col-md-1.functions
+      /   nav.navbar.navnar-default
+      /     ul.nav.navbar-nav
+      /       li 
+      /         i.glyphicon.glyphicon-sort-by-alphabet aria-hidden="true" aria-label="sort by alphabet"
+  .col-md-9.grid.js-masonry
+    - @music.each_with_index do |music, index|
+        .col-md-3.box.music 
+          .overlay-bg
+          .overlay
+            h4 = music.title
+            h5 = music.artist
+            h5 = music.album
+          img src= music.cover_image
+          .location data-url="#{music.path}"
+          .row
+            .col-md-6.music-details
+              h6 = music.title
+              h6.subheader = music.album
+            .col-md-6
+              h6.right = music.artist
+.row
+  h6.subheader.footer All rights reserved.
