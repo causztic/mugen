@@ -43,9 +43,13 @@ $(document).ready(function() {
   // player -> analyser -> speakers
   // (Do this after the player is ready to play - https://code.google.com/p/chromium/issues/detail?id=112368#c4)
   $("#player").bind('canplay', function() {
-    var source = audioCtx.createMediaElementSource(this);
-    source.connect(analyser);
-    analyser.connect(audioCtx.destination);
+    try {
+      var source = audioCtx.createMediaElementSource(this);
+      source.connect(analyser);
+      analyser.connect(audioCtx.destination);
+    } catch (e){
+      //do nothing
+    }
   });
 
   // Kick it off...
