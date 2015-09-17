@@ -6,7 +6,10 @@ $(document).ready(function(){
         var current_music = $(this);
         $("#player").show();
         var audio = $("#player");
-        $("#currentsong").attr("src", current_music.find(".location").data("url"));
+        $("#currentsong").attr("src", current_music.find(".music-item").data("url"));
+        $("#music-title").html(current_music.find(".music-item").data("title"));
+        $("#music-artist").html(current_music.find(".music-item").data("artist"));
+        $("#music-album").html(current_music.find(".music-item").data("album"));
         audio[0].pause();
         audio[0].load();
         audio[0].oncanplaythrough = audio[0].play();

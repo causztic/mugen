@@ -5,12 +5,19 @@
       .col-md-12.col-sm-6
         .title-items
           .viz
-            img.album-img
+            .row
+              .col-md-9
+                h5#music-title
+                h5.subheader#music-artist
+                h6#music-album
+              .col-md-3
+                img.album-img
             section#audio
             canvas#visualization.center
             audio#player controls=true autoplay=false
               source#currentsong src="" type="audio/mpeg"
           h1.song-info 無限の音楽エンジン.
+          h5.subheader lorem ipsum sit dolor amet.
       / .col-md-1.functions
       /   nav.navbar.navnar-default
       /     ul.nav.navbar-nav
@@ -25,7 +32,7 @@
             h5 = music.artist
             h5 = music.album
           img src= music.cover_image
-          .location data-url="#{music.path}"
+          .music-item data-url="#{music.path}" data-title="#{music.title}" data-artist="#{music.artist}" data-album="#{music.album}"
           .row
             .col-md-6.music-details
               h6 = music.title

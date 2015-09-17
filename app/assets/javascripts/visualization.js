@@ -23,7 +23,7 @@ $(document).ready(function() {
     canvasCtx.save();
     analyser.getByteFrequencyData(dataArray);
     //canvasCtx.globalAlpha = 0.1;
-    canvasCtx.fillStyle = '#f8f8f8';
+    canvasCtx.fillStyle = "#f8f8f8";
     //canvasCtx.globalAlpha = 1;
     canvasCtx.fillRect(0, 0, WIDTH, HEIGHT*2);
     canvasCtx.restore();
