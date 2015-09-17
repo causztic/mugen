@@ -7,16 +7,27 @@
         .title-items
           .viz
             .row
-              .col-md-9
+              .col-md-7
                 h5#music-title
                 h5.subheader#music-artist
                 h6#music-album
-              .col-md-3
+              .col-md-5
                 img.album-img
-            section#audio
-            canvas#visualization.center
-            audio#player controls=true autoplay=false
-              source#currentsong src="" type="audio/mpeg"
+            .row
+              .col-md-12
+                section#audio
+                canvas#visualization.center
+                audio#player preload="none"
+                  source#currentsong src="" type="audio/mpeg"
+            .row#play-controls
+              .col-md-12
+                hr
+              .col-md-3
+                h6.subheader#time-passed
+              .col-md-3.col-md-offset-6
+                h6.subheader#time-total.right
+              .col-md-3.col-md-offset-9
+                i#play-button.glyphicon.glyphicon-pause.right aria-hidden="true" aria-label="pause"
           h1.song-info 無限の音楽エンジン.
           h5.subheader lorem ipsum sit dolor amet.
       / .col-md-1.functions

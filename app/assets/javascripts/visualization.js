@@ -39,11 +39,29 @@ $(document).ready(function() {
     };
   };
 
+  // time left and seeker
+  $("#player").bind('timeupdate', function() {
+
+    var rem = parseInt($(this).get(0).currentTime, 10),
+    pos = (audioCtx.currentTime / audioCtx.duration) * 100,
+    mins = Math.floor(rem/60,10),
+    secs = rem - mins*60;
+
+    $("#time-passed").text(mins + ':' + (secs > 9 ? secs : '0' + secs));
+    //if (!manualSeek) { positionIndicator.css({left: pos + '%'}); }
+
+  });
+
   // Hook up the audio routing...
   // player -> analyser -> speakers
   // (Do this after the player is ready to play - https://code.google.com/p/chromium/issues/detail?id=112368#c4)
   $("#player").bind('canplay', function() {
     try {
+      var rem = parseInt($(this).get(0).duration, 10),
+      mins = Math.floor(rem/60,10),
+      secs = rem - mins*60;
+      $("#time-total").text(mins + ':' + (secs > 9 ? secs : '0' + secs));
+
       var source = audioCtx.createMediaElementSource(this);
       source.connect(analyser);
       analyser.connect(audioCtx.destination);
