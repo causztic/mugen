@@ -1,3 +1,4 @@
+
 .row
   .col-md-3.col-sm-12.divider.title
     .title-bg
@@ -25,14 +26,13 @@
       /         i.glyphicon.glyphicon-sort-by-alphabet aria-hidden="true" aria-label="sort by alphabet"
   .col-md-9.col-sm-12.grid.js-masonry
     - @music.each_with_index do |music, index|
-        .col-md-3.col-sm-6.box.music 
+        .col-md-3.col-sm-6.box.music id="#{index}"
           .overlay-bg
           .overlay
             h4 = music.title
             h5 = music.artist
             h5 = music.album
           img src= music.cover_image
-          .music-item id="music-item-#{index}" data-url="#{music.path}" data-title="#{music.title}" data-artist="#{music.artist}" data-album="#{music.album}"
           .row
             .col-md-6.music-details
               h6 = music.title
