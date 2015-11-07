@@ -8,3 +8,6 @@
 
 ## This is an experimental project.  I try out new stuff here! Currently only has HTML5 Audio and some canvas action.
 
+Email me at [limyaojie93@gmail.com](mailto:limyaojie93@gmail.com) if you have any ideas on what I should try out!
+
+Deployed by capistrano on unicorn. *neigh*
