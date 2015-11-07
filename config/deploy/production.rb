@@ -5,7 +5,7 @@ set :use_sudo, false
 set :bundle_env_variables, { 'NOKOGIRI_USE_SYSTEM_LIBRARIES' => 1 }
 
 server '103.253.146.211',
-  roles: [:web, :app, :db],
+  roles: [:web, :app],
   port: fetch(:port),
   user: fetch(:user),
   port: fetch(:port),
