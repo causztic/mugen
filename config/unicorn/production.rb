@@ -1,4 +1,5 @@
 root = "/home/graf/apps/mugen/current"
+rails_env = 'production'
 working_directory root
 
 pid "#{root}/tmp/pids/unicorn.pid"
