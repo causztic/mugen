@@ -1,9 +1,10 @@
 == README
 
-= First deployment:
-cap production deploy:initial
+# M U G E N.
 
-= do:
-+sudo apt-get install libtag1-dev+ or +brew install taglib+
-+rvm install libtag-ruby+
+[http://www.grafiore.ninja](http://www.grafiore.ninja)
+
+=== DESCRIPTION
+
+## This is an experimental project.  I try out new stuff here! Currently only has HTML5 Audio and some canvas action.
 
