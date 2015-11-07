@@ -20,4 +20,4 @@ set :ssh_options, {
 }
 
 set :rails_env, :production
-set :conditionally_migrate, true   
+ 
