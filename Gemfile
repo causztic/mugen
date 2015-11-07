@@ -1,3 +1,4 @@
+ruby '2.2.3'
 source 'https://rubygems.org'
 
 gem 'dotenv-rails'
@@ -24,7 +25,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'gon'
 gem 'slim'
-gem 'pg'
 
 gem 'taglib-ruby'
 
