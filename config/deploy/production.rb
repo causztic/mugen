@@ -2,11 +2,13 @@ set :port, 22
 set :user, 'graf'
 set :deploy_via, :remote_cache
 set :use_sudo, false
+set :bundle_env_variables, { 'NOKOGIRI_USE_SYSTEM_LIBRARIES' => 1 }
 
-server '162.255.119.251',
+server '103.253.146.211',
   roles: [:web, :app, :db],
   port: fetch(:port),
   user: fetch(:user),
+  port: fetch(:port),
   primary: true
 
 set :deploy_to, "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
