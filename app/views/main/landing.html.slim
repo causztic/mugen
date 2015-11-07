@@ -2,15 +2,15 @@
   .col-md-3.col-sm-12.col-xs-12.divider.title
     .title-bg
     .row
-      .col-md-12.col-sm-6.col-xs-12
+      .col-md-12.col-sm-12.col-xs-12
         .title-items
           .viz
             .row
-              .col-md-7.col-sm-12.col-xs-12
+              .col-md-7.col-sm-7.col-xs-7
                 h5#music-title
                 h5.subheader#music-artist
                 h6#music-album
-              .col-md-5
+              .col-md-5.col-sm-5.col-xs-5
                 img.album-img
             .row
               .col-md-12.col-sm-12.col-xs-12
@@ -21,9 +21,9 @@
             .row#play-controls
               .col-md-12
                 input#seek-bar type="range" value="0"
-              .col-md-3
+              .col-md-3.col-sm-3.col-xs-3
                 h6.subheader#time-passed
-              .col-md-3.col-md-offset-6
+              .col-md-3.col-md-offset-6.col-sm-3.col-sm-offset-6.col-xs-3.col-xs-offset-6
                 h6.subheader#time-total.right
               .col-md-3.col-md-offset-9
                 i#play-button.glyphicon.glyphicon-pause.right aria-hidden="true" aria-label="pause"
@@ -36,7 +36,7 @@
       /         i.glyphicon.glyphicon-sort-by-alphabet aria-hidden="true" aria-label="sort by alphabet"
   .col-md-9.col-sm-12.col-xs-12.grid.js-masonry
     - @music.each_with_index do |music, index|
-        .col-md-3.col-sm-6.col-xs-12.box.music id="#{index}"
+        .col-md-3.col-sm-3.col-xs-6.box.music id="#{index}"
           .overlay-bg
           .overlay
             h4 = music.title
@@ -44,10 +44,10 @@
             h5 = music.album
           img src= music.cover_image
           .row
-            .col-md-6.music-details
+            .col-md-6.col-sm-6.col-xs-6.music-details
               h6 = music.title
               h6.subheader = music.album
-            .col-md-6
+            .col-md-6.col-sm-6.col-xs-6
               h6.right = music.artist
 .row
   h6.subheader.footer All rights reserved.
