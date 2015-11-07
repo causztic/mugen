@@ -78,7 +78,7 @@ html,body {
   overflow: hidden;
 }
 .grid {
-  background-image: url('pw_pattern.png');
+  background-image: url(image_path('pw_pattern.png'));
   min-height: 100%;
   float: right;
   padding: 0;
