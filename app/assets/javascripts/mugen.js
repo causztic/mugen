@@ -104,6 +104,7 @@ $(document).ready(function() {
   
   
   $(".music").click(function(){
+      $("#play-button").addClass("glyphicon-pause").removeClass("glyphicon-play");
       var current_music = gon.music[$(this).attr("id")];
       $("#player").show();
       $("#currentsong").attr("src", current_music.path);
