@@ -82,6 +82,7 @@ html,body {
   min-height: 100%;
   float: right;
   padding: 0;
+  overflow: hidden;
 }
 .footer {
   position: fixed;
@@ -123,6 +124,10 @@ h1 {
     box-shadow: 1px 1px 0px 1px rgba(0,0,0,0.1);
     width: 100%;
     margin: 1em 0 0 0;
+  }
+  .placeholder {
+    margin: 0;
+    padding-top: 12px;
   }
   .overlay, .overlay-bg {
     visibility: hidden;

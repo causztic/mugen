@@ -13,7 +13,8 @@ class Music
         m.artist = @tag.artist
         m.album = @tag.album
         cover = @tag.frame_list('APIC').first
-        m.cover_image = cover.nil? ? "http://placehold.it/600x600" : "data:#{cover.mime_type};base64,#{Base64.encode64(cover.picture)}"
+        m.cover_image = cover.nil? ? "http://placehold.it/300x300" : "data:#{cover.mime_type};base64,#{Base64.encode64(cover.picture)}"
+
       end
       f["app/assets/audios/"] = ""
       m.path = Rails.env.production? ?  "assets/" + Rails.application.assets.find_asset(f).digest_path : "assets/" + f

@@ -1,19 +1,19 @@
 .row
-  .col-md-3.col-sm-12.divider.title
+  .col-md-3.col-sm-12.col-xs-12.divider.title
     .title-bg
     .row
-      .col-md-12.col-sm-6
+      .col-md-12.col-sm-6.col-xs-12
         .title-items
           .viz
             .row
-              .col-md-7
+              .col-md-7.col-sm-12.col-xs-12
                 h5#music-title
                 h5.subheader#music-artist
                 h6#music-album
               .col-md-5
                 img.album-img
             .row
-              .col-md-12
+              .col-md-12.col-sm-12.col-xs-12
                 section#audio
                 canvas#visualization.center
                 audio#player preload="none"
@@ -34,9 +34,9 @@
       /     ul.nav.navbar-nav
       /       li 
       /         i.glyphicon.glyphicon-sort-by-alphabet aria-hidden="true" aria-label="sort by alphabet"
-  .col-md-9.col-sm-12.grid.js-masonry
+  .col-md-9.col-sm-12.col-xs-12.grid.js-masonry
     - @music.each_with_index do |music, index|
-        .col-md-3.col-sm-6.box.music id="#{index}"
+        .col-md-3.col-sm-6.col-xs-12.box.music id="#{index}"
           .overlay-bg
           .overlay
             h4 = music.title
