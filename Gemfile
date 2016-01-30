@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'gon'
 gem 'slim'
 
-gem 'taglib-ruby'
+gem 'taglib-ruby', '~> 0.7.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
