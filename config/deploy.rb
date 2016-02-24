@@ -7,7 +7,7 @@ set :branch, "master"
 set :use_sudo, false
 set :bundle_binstubs, nil
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system')
-set :rvm1_ruby_version, "2.3.0"
+set :rvm1_ruby_version, "2.3.0@mugen"
 
 before 'deploy', 'rvm1:alias:create'
 before 'deploy', 'rvm1:install:gems' 
