@@ -1,7 +1,8 @@
 set :application, 'mugen'
 set :repo_url, 'git@github.com:causztic/mugen.git'
 
-ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
+# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
+set :branch, "master"
 
 set :use_sudo, false
 set :bundle_binstubs, nil
