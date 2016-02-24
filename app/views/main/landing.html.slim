@@ -7,9 +7,9 @@
           .viz
             .row
               .col-md-7.col-sm-7.col-xs-7
-                h5#music-title
-                h5.subheader#music-artist
-                h6#music-album
+                h3#music-title
+                h3.subheader#music-artist
+                h3#music-album
               .col-md-5.col-sm-5.col-xs-5
                 img.album-img
             .row
@@ -27,27 +27,23 @@
                 h6.subheader#time-total.right
               .col-md-3.col-md-offset-9
                 i#play-button.glyphicon.glyphicon-pause.right aria-hidden="true" aria-label="pause"
-          h1.song-info 無限の音楽エンジン.
-          h5.subheader lorem ipsum sit dolor amet.
-      / .col-md-1.functions
-      /   nav.navbar.navnar-default
-      /     ul.nav.navbar-nav
-      /       li 
-      /         i.glyphicon.glyphicon-sort-by-alphabet aria-hidden="true" aria-label="sort by alphabet"
+          h1.header yaojie
+          h2.subheader random experimental stuff!
+          h3.subheader portfolio coming soon.
   .col-md-9.col-sm-12.col-xs-12.grid.js-masonry
     - @music.each_with_index do |music, index|
         .col-md-3.col-sm-3.col-xs-6.box.music id="#{index}"
           .overlay-bg
           .overlay
-            h4 = music.title
-            h5 = music.artist
-            h5 = music.album
+            h3 = music.title
+            h3 = music.artist
+            h3 = music.album
           img src= music.cover_image
           .row
             .col-md-6.col-sm-6.col-xs-6.music-details
-              h6 = music.title
-              h6.subheader = music.album
+              h3 = music.title
+              h3.subheader = music.album
             .col-md-6.col-sm-6.col-xs-6
-              h6.right = music.artist
+              h3.right = music.artist
 .row
   h6.subheader.footer All rights reserved.
