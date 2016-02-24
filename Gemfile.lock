@@ -195,7 +195,6 @@ DEPENDENCIES
   aws-sdk (~> 2)
   byebug
   capistrano
-  capistrano-bundler
   capistrano-env
   capistrano-rails
   capistrano3-unicorn

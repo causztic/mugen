@@ -43,7 +43,6 @@ group :development do
   gem 'capistrano',         require: false
   gem 'rvm1-capistrano3',   require: false
   gem 'capistrano-rails',   require: false
-  gem 'capistrano-bundler', require: false
   gem 'capistrano3-unicorn'
   gem 'capistrano-env'
 end
