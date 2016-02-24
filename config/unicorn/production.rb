@@ -1,4 +1,4 @@
-root = "/home/graf/apps/mugen/current"
+root = "/home/pi/apps/mugen/current"
 working_directory root
 
 pid "#{root}/tmp/pids/unicorn.pid"
