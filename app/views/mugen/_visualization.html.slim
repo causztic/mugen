@@ -1,0 +1,23 @@
+.viz
+  .row
+    .col-xs-7
+      h3#music-title
+      h3.subheader#music-artist
+      h3#music-album
+    .col-xs-5
+      img.album-img
+  .row
+    .col-xs-12
+      section#audio
+      canvas#visualization.center
+      audio#player preload="none"
+        source#currentsong src="" type="audio/mpeg"
+  .row#play-controls
+    .col-xs-12
+      input#seek-bar type="range" value="0"
+    .col-xs-3
+      h6.subheader#time-passed
+    .col-xs-3.col-xs-offset-6
+      h6.subheader#time-total.right
+    .col-xs-3.col-xs-offset-9
+      i#play-button.glyphicon.glyphicon-pause.right aria-hidden="true" aria-label="pause"
