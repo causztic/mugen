@@ -6,3 +6,7 @@ html.no-js lang="en"
       .row
         = render "footer"
     = javascript_include_tag "application"
+    - if controller.controller_name == "mugen"
+      = Gon::Base.render_data
+      = javascript_include_tag "masonry.min"
+      = javascript_include_tag "mugen"
