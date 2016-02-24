@@ -10,7 +10,7 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 set :rvm_type, :user # :user if RVM installed in $HOME
 
 before 'deploy', 'rvm1:alias:create'
-before 'deploy', 'rvm1:install:gems' 
+# before 'deploy', 'rvm1:install:gems' 
 after 'deploy:publishing', 'deploy:restart'
 
 namespace :deploy do
