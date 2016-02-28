@@ -39,13 +39,30 @@ MusicVisuals = (canvas, width, height, audio) ->
   update()
 
   $(audio).bind 'canplay', ->
-    rem = parseInt($(this).get(0).duration, 10)
+    try
+      rem = parseInt($(this).get(0).duration, 10)
+      mins = Math.floor(rem / 60, 10)
+      secs = rem - (mins * 60)
+      $('#time-total').text mins + ':' + (if secs > 9 then secs else '0' + secs)
+      source = _this.audioCtx.createMediaElementSource(this)
+      source.connect _this.analyser
+      _this.analyser.connect _this.audioCtx.destination
+
+    # TODO: update total time in music player.
+    catch e
+    return
+
+  $(audio).bind 'timeupdate', ->
+    rem = parseInt(audio.currentTime, 10)
+    val = 100 / audio.duration * audio.currentTime
     mins = Math.floor(rem / 60, 10)
     secs = rem - (mins * 60)
-    $('#time-total').text mins + ':' + (if secs > 9 then secs else '0' + secs)
-    source = _this.audioCtx.createMediaElementSource(this)
-    source.connect _this.analyser
-    _this.analyser.connect _this.audioCtx.destination
+    # Update the slider value
+    $('#seek-bar').val val
+    $('#time-passed').text mins + ':' + (if secs > 9 then secs else '0' + secs)
+
+    # TODO: update state in music player.
+    return
 
 @MusicPlayer = React.createClass
   playMusic: ->
@@ -53,6 +70,7 @@ MusicVisuals = (canvas, width, height, audio) ->
     audio.pause()
     audio.load()
     audio.oncanplaythrough = audio.play()
+    this.state.timeTotal = audio.duration
     return audio
 
   updateBackground: ->
