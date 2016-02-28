@@ -87,6 +87,7 @@ html,body
 
 .box
   //border: 1px solid black;
+  position: relative
   img
     -webkit-box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.1)
     -moz-box-shadow: 1px 1px 0px 1px rgba(0, 0, 0, 0.1)
@@ -98,10 +99,10 @@ html,body
     padding-top: 12px
   .overlay, .overlay-bg
     visibility: hidden
-    margin-left: -15px
     width: 100%
     height: 100%
     position: absolute
+
   &:hover > .overlay-bg
     visibility: visible
     background-color: #000
