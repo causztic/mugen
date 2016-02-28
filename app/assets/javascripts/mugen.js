@@ -103,34 +103,34 @@ $(document).ready(function() {
   })
   
   
-  $(".music").click(function(){
-      $("#play-button").addClass("glyphicon-pause").removeClass("glyphicon-play");
-      var current_music = gon.music[$(this).attr("id")];
-      $("#player").show();
-      $("#currentsong").attr("src", current_music.path);
-      $("#music-title").html(current_music.title);
-      $("#music-artist").html(current_music.artist);
-      $("#music-album").html(current_music.album);
+//   $(".music").click(function(){
+//       $("#play-button").addClass("glyphicon-pause").removeClass("glyphicon-play");
+//       var current_music = gon.music[$(this).attr("id")];
+//       $("#player").show();
+//       $("#currentsong").attr("src", current_music.path);
+//       $("#music-title").html(current_music.title);
+//       $("#music-artist").html(current_music.artist);
+//       $("#music-album").html(current_music.album);
 
-      //update with new audio file
-      audio.pause();
-      audio.load();
-      audio.oncanplaythrough = audio.play();
+//       //update with new audio file
+//       audio.pause();
+//       audio.load();
+//       audio.oncanplaythrough = audio.play();
 
-      $("#play-controls").fadeIn();
+//       $("#play-controls").fadeIn();
 
-      $(".album-img").hide();
-      $(".album-img").attr("src", current_music.cover_image);
-      $(".album-img").fadeIn();
+//       $(".album-img").hide();
+//       $(".album-img").attr("src", current_music.cover_image);
+//       $(".album-img").fadeIn();
 
-      $(".title-bg").hide();
+//       $(".title-bg").hide();
       
-      //for some reason current_music.cover_image does not work?!? wtf
-      $(".title-bg").css("background", 'url(' + $(this).find("img")[0].src + ')');
+//       //for some reason current_music.cover_image does not work?!? wtf
+//       $(".title-bg").css("background", 'url(' + $(this).find("img")[0].src + ')');
 
-      $(".title-bg").css("background-repeat", "no-repeat");
-      $(".title-bg").css("background-position", "center center");
-      $(".title-bg").css("background-size", "cover");
-      $(".title-bg").fadeIn();
-  });
+//       $(".title-bg").css("background-repeat", "no-repeat");
+//       $(".title-bg").css("background-position", "center center");
+//       $(".title-bg").css("background-size", "cover");
+//       $(".title-bg").fadeIn();
+//   });
 });
