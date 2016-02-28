@@ -1,5 +1,14 @@
+/ .row
+/   = render "visualization"
+/   .col-md-9.col-xs-12.grid.content
+/   	= render "menu"
+/   	= render partial: "selection"
+
 .row
   = render "visualization"
   .col-md-9.col-xs-12.grid.content
   	= render "menu"
-  	= render partial: "selection"
+    - @music.each_slice(4) do |music|
+      	.row
+      	  - music.each_with_index do |file, index| 
+      	    = react_component 'MusicFile', file
