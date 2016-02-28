@@ -1,5 +1,25 @@
 
 @MusicPlayer = React.createClass
+
+  loadAudioContext: ->
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)()
+    analyser = audioCtx.createAnalyser()
+    analyser.fftSize = this.props.fftSize
+    bufferLength = analyser.frequencyBinCount
+    dataArray = new Uint8Array(bufferLength)
+
+    # specify the canvas
+    canvas = document.querySelector('canvas')
+    canvasCtx = canvas.getContext('2d')
+    canvasCtx.clearRect 0, 0, this.props.width, this.props.height
+    loadingIndicator = $('#loading')
+
+  playMusic: ->
+    audio = $('#player')[0]
+    audio.pause()
+    audio.load()
+    audio.oncanplaythrough = audio.play()
+
   updateBackground: ->
     $('.title-bg').hide()
     $('.title-bg').css 'background', 'url(' + $(".album-img")[0].src + ')'
@@ -8,21 +28,33 @@
     $('.title-bg').css 'background-size', 'cover'
     $('.title-bg').fadeIn()
 
+  getDefaultProps: ->
+    {
+      width: 360,
+      height: 100,
+      fftSize: 512, # fast fourier transform size. the bigger the number, the more bars will appear.
+      manualSeek: false }
+
   getInitialState: ->
-    { timeElapsed: 0, timePassed: 0, timeTotal: 0 }
+    { 
+      timeElapsed: 0, 
+      timePassed: 0, 
+      timeTotal: 0,
+      loaded: 0 }
 
   componentDidMount: ->
+    this.loadAudioContext()
+
     $('#play-button').addClass('glyphicon-pause').removeClass 'glyphicon-play'
     $('#player').show()
-    # #update with new audio file
-    # audio.pause()
-    # audio.load()
-    # audio.oncanplaythrough = audio.play()
+    this.playMusic()
     $('#play-controls').fadeIn()
     this.updateBackground()
+
   componentWillUnmount: ->
     # console.log "unmounted"
   componentDidUpdate: ->
+    this.playMusic()
     this.updateBackground()
   render: ->
     `<div>
