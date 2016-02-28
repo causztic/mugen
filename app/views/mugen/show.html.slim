@@ -8,5 +8,7 @@
   = render "visualization"
   .col-md-9.col-xs-12.grid.content
   	= render "menu"
-    - @music.each_with_index do |music, index|
-      = react_component 'MusicFile', music
+    - @music.each_slice(4) do |music|
+      	.row
+      	  - music.each_with_index do |file, index| 
+      	    = react_component 'MusicFile', file

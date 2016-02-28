@@ -7,7 +7,7 @@
     console.log "unmounted"
   render: ->
     # backticks are required for jsx components in coffeescript.
-    `<div className='col-sm-3 col-xs-6 music' id={this.props.id}>
+    `<div className='col-sm-3 col-xs-6 music box' id={this.props.id}>
       <div className='overlay-bg' />
       <div className='overlay'>
         <h3>{this.props.title}</h3>
