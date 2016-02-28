@@ -77,9 +77,9 @@ $(document).ready(function() {
 
 
   
-  $('.grid').masonry({
-    itemSelector: '.music'
-  });
+  // $('.grid').masonry({
+  //   itemSelector: '.music'
+  // });
 
   // Event listener for the seek bar
   $("#seek-bar").on("change", function() {
@@ -101,7 +101,6 @@ $(document).ready(function() {
       }
       $(this).toggleClass("glyphicon-pause").toggleClass("glyphicon-play");
   })
-  
   
 //   $(".music").click(function(){
 //       $("#play-button").addClass("glyphicon-pause").removeClass("glyphicon-play");

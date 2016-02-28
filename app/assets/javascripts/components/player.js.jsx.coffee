@@ -1,9 +1,30 @@
+
 @MusicPlayer = React.createClass
+  statics:
+    updateBackground: ->
+      $('.title-bg').hide()
+      $('.title-bg').css 'background', 'url(' + $(".album-img")[0].src + ')'
+      $('.title-bg').css 'background-repeat', 'no-repeat'
+      $('.title-bg').css 'background-position', 'center center'
+      $('.title-bg').css 'background-size', 'cover'
+      $('.title-bg').fadeIn()
+
   getInitialState: ->
     { timeElapsed: 0, timePassed: 0, timeTotal: 0 }
+
   componentDidMount: ->
+    $('#play-button').addClass('glyphicon-pause').removeClass 'glyphicon-play'
+    $('#player').show()
+    # #update with new audio file
+    # audio.pause()
+    # audio.load()
+    # audio.oncanplaythrough = audio.play()
+    $('#play-controls').fadeIn()
+    MusicPlayer.updateBackground()
   componentWillUnmount: ->
     # console.log "unmounted"
+  componentDidUpdate: ->
+    MusicPlayer.updateBackground()
   render: ->
     `<div>
       <div className="row">
