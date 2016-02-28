@@ -63,6 +63,15 @@ MusicVisuals = (canvas, width, height, audio) ->
 
     # TODO: update state in music player.
     return
+  $('#play-button').click ->
+    if $(this).hasClass('glyphicon-pause')
+      #pause
+      _this.audio.pause()
+    else
+      #play
+      _this.audio.play()
+    $(this).toggleClass('glyphicon-pause').toggleClass 'glyphicon-play'
+    return
 
 @MusicPlayer = React.createClass
   playMusic: ->
