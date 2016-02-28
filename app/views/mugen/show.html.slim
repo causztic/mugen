@@ -3,3 +3,10 @@
 /   .col-md-9.col-xs-12.grid.content
 /   	= render "menu"
 /   	= render partial: "selection"
+
+.row
+  = render "visualization"
+  .col-md-9.col-xs-12.grid.content
+  	= render "menu"
+    - @music.each_with_index do |music, index|
+      = react_component 'MusicFile', music
